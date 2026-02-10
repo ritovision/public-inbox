@@ -628,14 +628,14 @@ sub show_blob { # git->cat_async callback
 
 	# using some of the same CSS class names and ids as cgit
 	my $x = "<pre>blob $oid $size bytes $raw_more</pre>" .
-		"<hr /><table\nclass=blob>".
+		"<hr /><div\nclass=blobwrap><table\nclass=blob>".
 		"<tr><td\nclass=linenumbers><pre>";
 	# scratchpad in this loop is faster here than `printf $zfh':
 	$x .= sprintf("<a id=n$_ href=#n$_>% ${pad}u</a>\n", $_) for (1..$nl);
 	$x .= '</pre></td><td><pre> </pre></td>'. # pad for non-CSS users
 		"<td\nclass=lines><pre\nstyle='white-space:pre'><code>";
 	html_page($ctx, 200, $x, $ctx->{-linkify}->linkify_2($$blob),
-		'</code></pre></td></tr></table>'.dbg_log($ctx), @def);
+		'</code></pre></td></tr></table></div>'.dbg_log($ctx), @def);
 }
 
 sub start_solver {

@@ -556,7 +556,8 @@ sub get_attach {
 }
 
 # User-generated content (UGC) may have excessively long lines
-# and screw up rendering on some browsers, so we use pre-wrap.
+# and screw up rendering on some browsers, so we use pre-wrap
+# and overflow-wrap for content-bearing elements.
 #
 # We also force everything to the same scaled font-size because GUI
 # browsers (tested both Firefox and surf (webkit)) uses a larger font
@@ -565,7 +566,13 @@ sub get_attach {
 # Finally, we use monospace to ensure the Search field and button
 # has the same size and spacing as everything else which is
 # <pre>-formatted anyways.
-our $STYLE = 'pre{white-space:pre-wrap}*{font-size:100%;font-family:monospace}';
+# The blob code table intentionally keeps preformatted columns.
+our $STYLE = 'pre{white-space:pre-wrap;overflow-wrap:anywhere}'.
+	'a,p,li,dt,dd,td,th,blockquote,code,tt,kbd,samp{overflow-wrap:anywhere}'.
+	'.blobwrap{max-width:100%;overflow-x:auto}'.
+	'table.blob td.lines pre,table.blob td.lines pre code,'.
+	'table.blob td.linenumbers pre{white-space:pre;overflow-wrap:normal}'.
+	'*{font-size:100%;font-family:monospace}';
 
 sub _read_css ($$$) {
 	my ($fh, $mini, $fn) = @_;
