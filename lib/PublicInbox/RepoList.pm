@@ -12,6 +12,7 @@ sub html_top_fallback { # WwwStream->html_repo_top
 		ascii_html("$ctx->{env}->{PATH_INFO}*");
 	my $upfx = $ctx->{-upfx} // '';
 	"<html><head><title>$title</title>" .
+		qq(<meta\nname=viewport\ncontent="width=device-width,initial-scale=1"/>) .
 		$ctx->{www}->style($upfx) . '</head><body>';
 }
 

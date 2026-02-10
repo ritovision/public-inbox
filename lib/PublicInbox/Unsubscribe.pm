@@ -135,7 +135,8 @@ sub finalize_unsub { # on POST
 sub r {
 	my ($self, $code, $title, @body) = @_;
 	[ $code, [ @CT_HTML ], [
-		"<html><head><title>$title</title></head><body><pre>".
+		"<html><head><title>$title</title><meta\nname=viewport\n".
+		"content=\"width=device-width,initial-scale=1\"/></head><body><pre>".
 		join("\n", "<b>$title</b>\n", @body) . '</pre><hr>'.
 		"<pre>This page is available under AGPL-3.0+\n" .
 		join('', map { "git clone $_\n" } @{$self->{code_url}}) .
