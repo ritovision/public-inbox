@@ -214,6 +214,7 @@ sub psgi_triple {
 	my $gzf = gzf_maybe($h, $ctx->{env});
 	my $zfh = $gzf->zfh;
 	print $zfh '<html><head><title>public-inbox listing</title>',
+			qq(<meta\nname=viewport\ncontent="width=device-width,initial-scale=1"/>),
 			$ctx->{www}->style('+/'),
 			'</head><body>';
 	my $code = 404;

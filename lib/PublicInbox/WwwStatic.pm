@@ -318,7 +318,8 @@ sub dir_response ($$$) {
 	my @h = qw(Content-Type text/html);
 	my $gzf = gzf_maybe(\@h, $env);
 	print { $gzf->zfh } '<html><head><title>Index of ', $path_info_html,
-		'</title>', ${$self->{style}}, '</head><body><pre>Index of ',
+		'</title><meta\nname=viewport\ncontent="width=device-width,initial-scale=1"/>',
+		${$self->{style}}, '</head><body><pre>Index of ',
 		$path_info_html, '</pre><hr><pre>', @entries,
 		'</pre><hr></body></html>';
 	my $out = $gzf->zflush;

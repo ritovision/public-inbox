@@ -84,6 +84,7 @@ EOM
 		$top = "<pre>$top</pre>";
 	}
 	"<html><head><title>$title</title>" .
+		qq(<meta\nname=viewport\ncontent="width=device-width,initial-scale=1"/>) .
 		qq(<link\nrel=alternate\ntitle="Atom feed"\n).
 		qq(href="$atom"\ntype="application/atom+xml"/>) .
 		$ctx->{www}->style($upfx) .
@@ -131,6 +132,7 @@ sub html_top ($) {
 		$top = '<pre>' . $top . "\n" . $links . '</pre>';
 	}
 	"<html><head><title>$title</title>" .
+		qq(<meta\nname=viewport\ncontent="width=device-width,initial-scale=1"/>) .
 		qq(<link\nrel=alternate\ntitle="Atom feed"\n).
 		qq(href="$atom"\ntype="application/atom+xml"/>) .
 	        $ctx->{www}->style($upfx) .
