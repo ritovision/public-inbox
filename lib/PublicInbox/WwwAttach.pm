@@ -49,7 +49,9 @@ sub get_attach_i { # ->each_part callback
 			$res->[1]->[1] = 'text/html';
 			$part = <<"";
 <html><head><title>download
-attachment</title><body><pre>Deep-linking prevented</pre><form
+attachment</title><meta
+name=viewport
+content="width=device-width,initial-scale=1"/></head><body><pre>Deep-linking prevented</pre><form
 method=post\naction=""><input type=submit value="Download attachment"
 /></form></body></html>
 
